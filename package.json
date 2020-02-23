@@ -1,6 +1,9 @@
 {
   "name": "mat-design",
   "version": "0.1.0",
+  "engines": {
+    "node": "10.14.2"
+  },
   "private": true,
   "dependencies": {
     "@material/button": "^1.0.1",
