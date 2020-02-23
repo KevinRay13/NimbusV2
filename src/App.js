@@ -19,9 +19,6 @@ class App extends Component {
       error: undefined
     };
   }
-  // sendWeather = e =>{
-
-  // }
   getWeather = e => {
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
@@ -29,24 +26,6 @@ class App extends Component {
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}&units=imperial`
       )
-      .post('/webhook', function(req, res) {
-        console.log('recieved a post request');
-        if (!req.body) return res.sendStatus(400);
-        res.setHeader('Content-Type', 'application/json');
-        console.log('here is the post req from dialog flow');
-        console.log(req.body);
-        console.log(
-          'got geocity location from param from dialoge flow' +
-            req.body.queryResult.paramaters['geo-city']
-        );
-        let response = '';
-        let responseObj = {
-          fulfillmentText: response,
-          fulfillmentMessages: [{ text: { text: [this.state.city] } }],
-          source: ''
-        };
-        console.log('here is the response to dflow', responseObj);
-      })
       .then(res => {
         console.log(res.data);
         const response = res.data;
